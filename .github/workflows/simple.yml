@@ -12,7 +12,7 @@ jobs:
         with:
           who-to-greet: Leslie # Input for this action
       - name: Log Greeting Time
-        run: echo {{ steps.greet.outputs.time }} # Reference the greet step above
+        run: echo "${{ steps.greet.outputs.time }}" # Reference the greet step above
   # run-shell-command:
   #   runs-on: ubuntu-latest
   #   steps: 
