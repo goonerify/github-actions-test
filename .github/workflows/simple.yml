@@ -3,26 +3,36 @@ name: Shell Commands
 on: [push]
 
 jobs:
-  run-shell-command:
+  run-github-actions:
     runs-on: ubuntu-latest
-    steps: 
-      - name: echo a string
-        run: echo "Hello World"
-      - name: multiline script 
-        run: |
-           node -v 
-           npm -v
-      - name: python command
-        run: |
-          import platform
-          print(platform.processor())
-        shell: python
-  run-windwos-commands:
-    runs-on: windows-latest
-    needs: ["run-shell-command"] # Only run run-windwos-commands job after the run-shell-command job finishes
     steps:
-      - name: Directory PowerShell
-        run: Get-Location 
-      - name: Directory Bash 
-        run: pwd 
-        shell: bash 
+      - name: Simple JS Action
+        id: greet # Used to reference this step from the steps variable that github actions provides
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: Leslie # Input for this action
+      - name: Log Greeting Time
+        run: echo {{ steps.greet.outputs.time }} # Reference the greet step above
+  # run-shell-command:
+  #   runs-on: ubuntu-latest
+  #   steps: 
+  #     - name: echo a string
+  #       run: echo "Hello World"
+  #     - name: multiline script 
+  #       run: |
+  #          node -v 
+  #          npm -v
+  #     - name: python command
+  #       run: |
+  #         import platform
+  #         print(platform.processor())
+  #       shell: python
+  # run-windwos-commands:
+  #   runs-on: windows-latest
+  #   needs: ["run-shell-command"] # Only run run-windwos-commands job after the run-shell-command job finishes
+  #   steps:
+  #     - name: Directory PowerShell
+  #       run: Get-Location 
+  #     - name: Directory Bash 
+  #       run: pwd 
+  #       shell: bash
