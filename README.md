@@ -15,5 +15,15 @@ ${{ github.token }}: Token that can be used to authenticate with the GitHub repo
 ## **CRON Schedule**
 Cron scheduled jobs can only be initiated from the master repository. A main branch with a name other than master does not seem to work.
 
-## ****
+## **Repository Dispatch URL**
+Send a cURL POST request to this endpoint to trigger a repository dispatch workflow for a custom event - in this case "build" event
 https://api.github.com/repos/goonerify/github-actions-test/dispatches
+
+### **Personal Access Token**
+A Github personal access token was used to set the Bearer Token authorization header
+
+NOTE: A POST request was created with Postman under the Github Actions collection named 11. ***Triggering Workflows Manually Using the Repository Dispatch Event***
+
+For more info about [creating a repository dispatch event](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event)
+
+

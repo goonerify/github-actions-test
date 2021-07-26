@@ -17,6 +17,9 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Print Repository Dispatch Payload
+        run: |
+          echo "${{ github.event.client_payload.env }}"
       - name: List Files
         run: |
           pwd
@@ -28,7 +31,7 @@ jobs:
           echo "${{ github.token }}"
       - name: checkout
         uses: actions/checkout@v2 # Clone your repository into the working directory of your VM
-      - name: List Files After Checkout
+      - name: List Files After Checkout # Cloned repository should now be visible in the directory
         run: |
           pwd
           ls -a
