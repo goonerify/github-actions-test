@@ -2,11 +2,11 @@ name: Actions Workflow
 
 # on: [push]
 on:
-  schedule:
-    # Cron schedule expression: Minutes, hours, day of the month, month, day of the week
-    # This will run "every minute" - of every hour of every day, of every month
-  - cron: "0/5 * * * *"
-  - cron: "0/6 * * * *"
+  # schedule:
+  #   # Cron schedule expression: Minutes, hours, day of the month, month, day of the week
+  #   # This will run "every minute" - of every hour of every day, of every month
+  # - cron: "0/5 * * * *"
+  # - cron: "0/6 * * * *"
   # push:
   pull_request:
     types: ["closed", "assigned", "opened", "reopened"]
