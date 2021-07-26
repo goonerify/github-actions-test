@@ -11,3 +11,6 @@ $GITHUB_REPOSITORY: Name of the GitHub repository<br/>
 $GITHUB_WORKSPACE: The workspace directory (same as running pwd command)<br/>
 $GITHUB_REF: The branch that triggered the Github action. Varies based on the type of webhook event<br/>
 ${{ github.token }}: Token that can be used to authenticate with the GitHub repository<br/>
+
+## **CRON Schedule**
+Cron scheduled jobs can only be initiated from the main/master repository.
