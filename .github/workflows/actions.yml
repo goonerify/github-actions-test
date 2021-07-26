@@ -2,6 +2,8 @@ name: Actions Workflow
 
 # on: [push]
 on:
+  repository_dispatch:
+    types: [build] # A custom webhook event name.
   # schedule:
   #   # Cron schedule expression: Minutes, hours, day of the month, month, day of the week
   #   # This will run "every minute" - of every hour of every day, of every month
