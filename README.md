@@ -14,3 +14,6 @@ ${{ github.token }}: Token that can be used to authenticate with the GitHub repo
 
 ## **CRON Schedule**
 Cron scheduled jobs can only be initiated from the main/master repository.
+
+## ****
+https://api.github.com/repos/goonerify/github-actions-test/dispatches
