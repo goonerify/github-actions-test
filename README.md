@@ -13,7 +13,7 @@ $GITHUB_REF: The branch that triggered the Github action. Varies based on the ty
 ${{ github.token }}: Token that can be used to authenticate with the GitHub repository<br/>
 
 ## **CRON Schedule**
-Cron scheduled jobs can only be initiated from the main/master repository.
+Cron scheduled jobs can only be initiated from the master repository. A main branch with a name other than master does not seem to work.
 
 ## ****
 https://api.github.com/repos/goonerify/github-actions-test/dispatches
