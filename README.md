@@ -30,4 +30,6 @@ For more info about [creating a repository dispatch event](https://docs.github.c
 ## **12. Filtering Workflows by Branches, Tags & Paths**
 [Filter pattern cheat sheet](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet) showing how to match path, branch, and tag filters to trigger a workflow for those branches when matched.
 
+## **16. Encrypting & Decrypting Files**
+Install the command line utility [GnuPG](https://www.gnupg.org/) in order to encrypt secret files
 
