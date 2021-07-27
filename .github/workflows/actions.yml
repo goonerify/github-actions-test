@@ -2,8 +2,30 @@ name: Actions Workflow
 
 # on: [push]
 on:
-  repository_dispatch:
-    types: [build] # A custom webhook event name.
+  push:
+    # # matches all branches except the ones listed below. It cannot be used with the branches keyword
+    # branches-ignore: 
+    #   - 'feature/**' # matches feature/featA, feature/featB, feature/feat/a
+    branches:
+      - master
+      - 'feature/*' # matches pushes to feature/featA, feature/featB. Will not match feature/feat/A
+      - 'feature/**' # matches pushes to feature/featA, feature/featB, feature/feat/A
+      - '!feature/featC' # Explicitly prevent matching pushes to the feature/featC branch
+    tags:
+      - v1 # matches pushes with any tags with v1 label
+      - v1.*
+    # Match only certain file patterns
+    paths:
+      - '**.js' # matches only when javascript files are pushed
+      - '!filename.js' # Explicitly prevent matching filename.js on push
+    # # matches all file paths except the ones listed below. It cannot be used with the paths keyword
+    # paths-ignore:
+    #   - 'docs/**'
+    # # matches all tags except the ones listed below. It cannot be used with the tags keyword
+    # tags-ignore:
+    #   - v2
+  # repository_dispatch:
+  #   types: [build] # A custom webhook event name.
   # schedule:
   #   # Cron schedule expression: Minutes, hours, day of the month, month, day of the week
   #   # This will run "every minute" - of every hour of every day, of every month
