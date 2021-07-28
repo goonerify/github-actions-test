@@ -1,0 +1,15 @@
+name: Matrix
+on: push
+
+jobs:
+  node-version:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Log node version
+        run: node -v
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: 6
+      - name: Log node version
+        run: node -v
