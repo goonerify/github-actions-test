@@ -4,6 +4,7 @@ on: push
 jobs:
   node-version:
     strategy:
+      # 3X3 matrix will run this job 9 times
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         # Arbitrary value that can be whatever we want
@@ -11,8 +12,25 @@ jobs:
       # fail-fast: true
       # # Limit the number of jobs running in parallel in this matrix
       # max-parallel: 2
+        exclude:
+          - os: ubuntu-latest
+            node_version: 6
+          - os: macos-latest
+            node_version: 8
+        # Adds extra variables for configurations that already exist in the matrix
+        include:
+          - os: ubuntu-latest
+            node_version: 8
+            # This variable will exist in the matrix context when the other 2 configs 
+            # are met i.e os: ubuntu-latest and node_version: 8
+            is_ubuntu_8: 'true'
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
     steps:
+      - name: Print Is Ubuntu
+        run: |
+          echo $IS_UBUNTU_8
       - name: Log node version
         run: node -v
       - name: Setup Node.js environment
