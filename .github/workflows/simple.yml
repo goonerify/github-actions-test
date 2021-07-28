@@ -6,9 +6,13 @@ on: [pull_request]
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    # Increase/decrease the amount of time a job is allowed to take. Default is 6 hours
+    # timeout-minutes: 360
     steps: 
       - name: echo a string
         run: echo "Hello World"
+        # Max number of minutes before github kills the process for this step
+        # timeout-minutes: 360
       - name: multiline script 
         run: |
            node -v 
@@ -20,7 +24,9 @@ jobs:
         shell: python
   run-windwos-commands:
     runs-on: windows-latest
-    needs: ["run-shell-command"] # Only run run-windwos-commands job after the run-shell-command job finishes
+    # Run jobs in sequence
+    # Only run run-windwos-commands job after the run-shell-command job finishes
+    needs: ["run-shell-command"] 
     steps:
       - name: Directory PowerShell
         run: Get-Location 
