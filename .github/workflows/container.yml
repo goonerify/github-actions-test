@@ -21,7 +21,8 @@ jobs:
           entrypoint: /usr/local/bin/node
           args: -v
       - uses: actions/checkout@v2
-      - run: |
+      - name: Change script permissions
+        run: |
           chmod +x script.sh
           ls -la
       - name: Run a script
@@ -29,6 +30,12 @@ jobs:
         with:
           entrypoint: ./script.sh
           args: "Some String"
+      - name: Sends a slack message
+        uses: docker://technosophos/slack-notify
+        env: 
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Hello Slack from Leslie"
+
   node-docker:
     runs-on: ubuntu-latest
     services:
